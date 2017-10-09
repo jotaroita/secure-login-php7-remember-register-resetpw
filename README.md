@@ -3,7 +3,7 @@
 Secure Login Functions:
 - Easy Register Form with just email and password (no need to confirm email)
 - Login (using DB and sessions)
-- Remember checkbox (cookie with secure token and selector)
+- Remember checkbox (cookie with secure token and selector) more secure if run in PHP 7 (but works in 5.6 too)
 - Reset password (send email to the user for recovery)
 - Logout (...and unset cookie)
 - avoid SQL injection with request in PDO
@@ -17,8 +17,6 @@ to do:
 - if multiple access for the same user at the same time, disconnect others, delete all cookies
 
 require DB Mysql
-i wrote the query with PDO
-
 if run in PHP > 7 the script use random_bytes,
 otherwise the script will use openssl_random_pseudo_bytes
 
