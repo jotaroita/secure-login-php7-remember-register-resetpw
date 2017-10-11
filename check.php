@@ -32,7 +32,7 @@
 //************************************ EDIT FROM HERE *******************************************
 
 define ("PEPPER",'s4l7S4!t'); //random string for extra salt
-define ("WEBSITE",'www.imagecountdown.com');  //your web site without http:// without final /
+define ("WEBSITE",'www.yourwebsite.com');  //your web site without http:// without final /
 define ("SCRIPTFOLDER",'/login'); //direcory of the script start with a / if you installed the script in the root write just a / never finish with a /
 
 $hosting="localhost"; //your host or localhost
