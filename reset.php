@@ -59,7 +59,6 @@ $sql->bindParam(1, $_POST["email"]);
 $sql->execute();
 $debug.="reset code saved in database<br>";
 //doesn't show other specific error (like user is not in our database) for security reasons
-// link/reset.php?r=base64_encode(reset_code);
 
 $pw_url="http://".WEBSITE.SCRIPTFOLDER."/reset.php?s=".$reset_selector."&p=".base64_encode($reset_code);
 
@@ -69,7 +68,12 @@ $pw_url="http://".WEBSITE.SCRIPTFOLDER."/reset.php?s=".$reset_selector."&p=".bas
  If you cannot click it, please paste it into your web browser's address bar.\n\n" . $pw_url . "\n\nThanks,\nThe Administration\n\n\n
  PS For security reasons this link will be expire in 10 minutes";
  
-$debug=(mail("jotaropua@gmail.com", WEBSITE." - Password Reset", $mail_body))?"Mail with Reset code sent":"Mail NOT sent";
+	
+	//if send email doesnt work
+	//use https://github.com/PHPMailer/PHPMailer
+	//instead of standard php mail function
+	
+$debug=(mail($_POST["email"], WEBSITE." - Password Reset", $mail_body))?"Mail with Reset code sent":"Mail NOT sent";
 		
         $message="If email registered in our system, the password recovery key has been sent.";
 
