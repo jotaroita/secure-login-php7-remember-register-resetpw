@@ -50,7 +50,7 @@ if ($exists) {$error="Email Already Registered";break;}
 $hash = password_hash($_POST['password'].PEPPER, PASSWORD_DEFAULT, ['cost' => 12]);
 
 try {
-$sql = $db->prepare("INSERT INTO utenti (email,password) VALUES (? ,? ,?)");
+$sql = $db->prepare("INSERT INTO utenti (email,password) VALUES (? ,?)");
 $sql->bindParam(1, $_POST["email"]);
 $sql->bindParam(2, $hash);
 $sql->execute();
