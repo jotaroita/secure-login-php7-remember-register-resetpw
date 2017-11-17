@@ -60,7 +60,9 @@ $sql->execute();
 $debug.="reset code saved in database<br>";
 //doesn't show other specific error (like user is not in our database) for security reasons
 
-$pw_url="http://".WEBSITE.SCRIPTFOLDER."/reset.php?s=".$reset_selector."&p=".base64_encode($reset_code);
+//send email only if updated $count = $del->rowCount();
+if ($sql->rowCount()) {
+$pw_url="http://".WEBSITE.SCRIPTFOLDER."reset.php?s=".$reset_selector."&p=".base64_encode($reset_code);
 
  $mail_body = "Dear user,\n\nIf this e-mail does not apply to you please ignore it.
  It appears that you have requested a password reset at our website ".WEBSITE."\n\n
@@ -73,8 +75,8 @@ $pw_url="http://".WEBSITE.SCRIPTFOLDER."/reset.php?s=".$reset_selector."&p=".bas
 	//use https://github.com/PHPMailer/PHPMailer
 	//instead of standard php mail function
 	
-$debug=(mail($_POST["email"], WEBSITE." - Password Reset", $mail_body))?"Mail with Reset code sent":"Mail NOT sent";
-		
+$debug.=(mail($_POST["email"], WEBSITE." - Password Reset", $mail_body))?"Mail with Reset code sent<br>":"Mail NOT sent<br>";
+}		
         $message="If email registered in our system, the password recovery key has been sent.";
 
 
